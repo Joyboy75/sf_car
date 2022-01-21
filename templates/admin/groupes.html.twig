@@ -1,0 +1,12 @@
+{% extends "admin/base.html.twig" %}
+
+{% block main %}
+
+{% for groupe in groupes %}
+    
+    <h2>{{ groupe.name}}</h2>
+    <h3>{{groupe.country}}</h3>
+    
+{% endfor %}
+
+{% endblock %}

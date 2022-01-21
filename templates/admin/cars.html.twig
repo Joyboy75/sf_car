@@ -1,0 +1,14 @@
+{% extends "admin/base.html.twig" %}
+
+{% block main %}
+
+{% for car in cars %}
+    
+    <h2>{{ car.name}}</h2>
+    <h3>{{car.engine}}</h3>
+    <h4>{{car.description}}</h4>
+    <h4>{{car.brand.name}}</h4>
+    <h4>{{car.groupe.name}}</h4>
+{% endfor %}
+
+{% endblock %}
