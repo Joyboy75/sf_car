@@ -1,18 +1,21 @@
-{% extends "admin/base.html.twig" %}
+{% extends "front/base.html.twig" %}
 
 {% block main %}
 
 
-<div class="card mb-3 ms-5 mt-4" style="width: 18rem;">
+{% for groupe in groupes %}
+    
+    <div class="card mb-3 ms-5 mt-4" style="width: 18rem;">
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
-  <h2>{{ brand.name}}</h2>
-    <h6>{{brand.country}}</h6>
+  <h2>{{ groupe.name}}</h2>
+    <h6>{{groupe.country}}</h6>
     <h5 class="card-title">Card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
-
+    
+{% endfor %}
 
 {% endblock %}

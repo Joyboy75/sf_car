@@ -19,6 +19,30 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
+    public function searchByTerm($term)
+    {
+        // QueryBuilder permet de créer des requêtes SQL en PHP
+        $queryBuilder = $this->createQueryBuilder('car');
+
+        $query = $queryBuilder
+            ->select('car') // select sur la table car
+            ->leftJoin('car.brand', 'brand') // leftjoin sur la table brand
+            ->leftJoin('car.groupe', 'groupe') // leftjoin sur la table groupe
+            ->where('car.name LIKE :term') // WHERE de SQL
+            ->orWhere('car.year LIKE :term') // OR WHERE de SQL
+            ->orWhere('car.engine LIKE :term') // OR WHERE de SQL
+            ->orWhere('brand.name LIKE :term')
+            ->orWhere('brand.country LIKE :term')
+            ->orWhere('groupe.name LIKE :term')
+            ->orWhere('groupe.country LIKE :term')
+            ->setParameter('term', '%' . $term . '%') // On attribue le term rentré et on le sécurise
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
     // /**
     //  * @return Car[] Returns an array of Car objects
     //  */

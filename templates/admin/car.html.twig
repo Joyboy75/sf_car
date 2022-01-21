@@ -1,8 +1,21 @@
 {% extends "admin/base.html.twig" %}
 
 {% block main %}
-<h1>{{car.name}}</h1>
+
+<div class="card mb-3 ms-5 mt-4" style="width: 18rem;">
+{% for image in car.images %}
+
+			<img width="200px" src="{{ asset('media/' ~ image.src) }}" alt="{{ image.alt }}">
+
+		{% endfor %}  <div class="card-body">
+  <h1>{{car.name}}</h1>
 <h2>{{car.engine}}</h2>
 <h3>{{car.year}}</h3>
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="{{path('admin_update_car' ,{'id' : car.id} )}}" class="btn btn-primary">Modifier</a>
+    <a href="{{path('admin_delete_car' ,{'id' : car.id} )}}" class="btn btn-secondary">Supprimer</a>
+  </div>
+</div>
 
 {% endblock %}

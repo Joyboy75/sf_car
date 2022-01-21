@@ -21,19 +21,19 @@ class AdminCarController extends AbstractController{
 
         $cars = $carRepository->findAll();
 
-        return $this->render("front/cars.html.twig", ["cars"=>$cars]);
+        return $this->render("admin/cars.html.twig", ["cars"=>$cars]);
         
     }
 
     /**
-     * @Route("admin/car/{id}", name="admin/car_show")
+     * @Route("admin/car/{id}", name="admin_car_show")
      */
     public function AdminCarShow($id,
     CarRepository $carRepository){
 
         $car = $carRepository->find($id);
 
-        return $this->render("front/car.html.twig", ['car' => $car]);
+        return $this->render("admin/car.html.twig", ['car' => $car]);
 
     }
 

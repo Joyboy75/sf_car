@@ -4,11 +4,19 @@
 
 {% for car in cars %}
     
-    <h2>{{ car.name}}</h2>
-    <h3>{{car.engine}}</h3>
-    <h4>{{car.description}}</h4>
-    <h4>{{car.brand.name}}</h4>
-    <h4>{{car.groupe.name}}</h4>
+   <div class="card mb-3 ms-5 mt-4" style="width: 18rem;">
+			<img src="{{asset('media/' ~ car.images[0].src)}}" alt="{{car.images[0].alt}}" class="card-img-top" widht="200px">
+  <div class="card-body">
+  <h1>{{car.name}}</h1>
+<h2>{{car.engine}}</h2>
+<h3>{{car.year}}</h3>
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<a href="{{path('car_show', {'id' : car.id}) }}"  class=" btn btn-primary">
+					Voir le véhicule
+				</a>  </div>
+</div>
+
 {% endfor %}
 
 {% endblock %}

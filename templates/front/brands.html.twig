@@ -1,9 +1,12 @@
-{% extends "admin/base.html.twig" %}
+{% extends "front/base.html.twig" %}
 
 {% block main %}
 
 
-<div class="card mb-3 ms-5 mt-4" style="width: 18rem;">
+
+{% for brand in brands %}
+
+        <div class="card mb-3 ms-5 mt-4" style="width: 18rem;">
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
   <h2>{{ brand.name}}</h2>
@@ -14,5 +17,8 @@
   </div>
 </div>
 
+
+    
+{% endfor %}
 
 {% endblock %}

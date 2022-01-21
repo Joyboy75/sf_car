@@ -1,0 +1,14 @@
+{% extends "front/base.html.twig" %}
+
+{% block main %}
+
+<h1>Les résultats de la recherche {{ term }} sont :</h1>
+
+{% for car in cars %}
+
+<h2>{{car.name}}</h2>
+
+    
+{% endfor %}
+
+{% endblock %}

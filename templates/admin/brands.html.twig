@@ -2,10 +2,27 @@
 
 {% block main %}
 
+{% for message in app.flashes('notice') %}
+            <div class="alert alert-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+
 {% for brand in brands %}
-    
-    <h2>{{ brand.name}}</h2>
-    <h3>{{brand.country}}</h3>
+
+        <div class="card mb-3 ms-5 mt-4" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+  <h2>{{ brand.name}}</h2>
+    <h6>{{brand.country}}</h6>
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+
     
 {% endfor %}
 

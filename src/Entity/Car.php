@@ -55,6 +55,16 @@ class Car
      */
     private $groupe;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="car")
+     */
+    private $likes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Dislike::class, mappedBy="car")
+     */
+    private $dislikes;
+
     
 
     public function __construct()
@@ -62,6 +72,8 @@ class Car
         $this->groupes = new ArrayCollection();
         $this->brands = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->likes = new ArrayCollection();
+        $this->dislikes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -169,6 +181,85 @@ class Car
     public function setGroupe(?Groupe $groupe): self
     {
         $this->groupe = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Like[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Like $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setCar($this);
+        }
+
+        return $this;
+    }
+
+    public function isLikeByUser(User $user)
+    {
+
+        foreach ($this->likes as $like) {
+            if ($like->getUser() === $user) {
+                return true;
+            }
+        }
+    }
+
+    public function removeLike(Like $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getCar() === $this) {
+                $like->setCar(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Dislike[]
+     */
+    public function getDislikes(): Collection
+    {
+        return $this->dislikes;
+    }
+
+    public function addDislike(Dislike $dislike): self
+    {
+        if (!$this->dislikes->contains($dislike)) {
+            $this->dislikes[] = $dislike;
+            $dislike->setCar($this);
+        }
+
+        return $this;
+    }
+
+    public function isDislikeByUser(User $user)
+    {
+        foreach ($this->dislikes as $dislike) {
+            if ($dislike->getUser() === $user) {
+                return true;
+            }
+        }
+    }
+
+    public function removeDislike(Dislike $dislike): self
+    {
+        if ($this->dislikes->removeElement($dislike)) {
+            // set the owning side to null (unless already changed)
+            if ($dislike->getCar() === $this) {
+                $dislike->setCar(null);
+            }
+        }
 
         return $this;
     }
