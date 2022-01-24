@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminGroupeController extends AbstractController{
 
+    //Récupération de tous les éléments de la table groupe
      /**
      * @Route("admin/groupes", name="admin_groupe_list")
      */
@@ -25,6 +26,7 @@ class AdminGroupeController extends AbstractController{
         
     }
 
+    //Récupération d'un élément de la table groupe
     /**
      * @Route("admin/groupe/{id}", name="admin/groupe_show")
      */
@@ -38,6 +40,7 @@ class AdminGroupeController extends AbstractController{
     }
 
 
+    //Création d'un élément groupe
     /**
      *@Route("admin/create/groupe", name="admin_create_groupe")
      */
@@ -65,6 +68,7 @@ class AdminGroupeController extends AbstractController{
     }
 
 
+        //Modification d'un élément de la table groupe grâce à son id
     /**
      *@Route("admin/update/groupe/{id}", name="admin_update_groupe")
      */
@@ -103,6 +107,8 @@ class AdminGroupeController extends AbstractController{
 
         return $this->render('admin/groupeform.html.twig', ['groupeForm' => $groupeForm->createView()]);
     }
+
+        //Suppression d'un élément de la table groupe grâce à son id
 
     /**
      * @Route("admin/delete/groupe/{id}", name="admin_delete_groupe")

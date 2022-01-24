@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminCarController extends AbstractController{
 
+    //Récupération de tous les éléments de la table car
     /**
      * @Route("admin/cars", name="admin_car_list")
      */
@@ -25,6 +26,7 @@ class AdminCarController extends AbstractController{
         
     }
 
+    //Récupération d'un élément de car
     /**
      * @Route("admin/car/{id}", name="admin_car_show")
      */
@@ -38,6 +40,7 @@ class AdminCarController extends AbstractController{
     }
 
 
+    //Création d'un élément dans car
     /**
      *@Route("admin/create/car", name="admin_create_car")
      */
@@ -65,6 +68,7 @@ class AdminCarController extends AbstractController{
     }
 
 
+    //Modification d'un élément de la table car grâce à son id
     /**
      *@Route("admin/update/car/{id}", name="admin_update_car")
      */
@@ -103,6 +107,8 @@ class AdminCarController extends AbstractController{
 
         return $this->render('admin/carform.html.twig', ['carForm' => $carForm->createView()]);
     }
+
+        //Suppression d'un élément de la table car grâce à son id
 
     /**
      * @Route("admin/delete/car/{id}", name="admin_delete_car")

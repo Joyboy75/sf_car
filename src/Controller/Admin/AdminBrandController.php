@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminBrandController extends AbstractController{
 
 
+    //Récupération de tous les éléments de la table brands 
+
     /**
      * @Route("admin/brands", name="admin_brand_list")
      */
@@ -26,6 +28,8 @@ class AdminBrandController extends AbstractController{
         
     }
 
+
+    // Récupération d'un élément de la page brand 
     /**
      * @Route("admin/brand/{id}", name="admin/brand_show")
      */
@@ -39,6 +43,9 @@ class AdminBrandController extends AbstractController{
     }
 
 
+
+
+    //Création d'un élément  dans brand
     /**
      *@Route("admin/create/brand", name="admin_create_brand")
      */
@@ -66,6 +73,7 @@ class AdminBrandController extends AbstractController{
     }
 
 
+    //Modification d'un élément brand grâce à son id 
     /**
      *@Route("admin/update/brand/{id}", name="admin_update_brand")
      */
@@ -105,6 +113,7 @@ class AdminBrandController extends AbstractController{
         return $this->render('admin/brandform.html.twig', ['brandForm' => $brandForm->createView()]);
     }
 
+    //Suppresion d'un élément grâce à son id
     /**
      * @Route("admin/delete/brand/{id}", name="admin_delete_brand")
      */

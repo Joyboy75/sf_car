@@ -25,13 +25,13 @@ class AdminImageController extends AbstractController
     }
 
     /**
-     * @Route("/admin/images", name="admin_image_list")
+     * @Route("admin/images", name="admin_image_list")
      */
     public function imageList(ImageRepository $imageRepository){
 
         $images = $imageRepository->findAll();
 
-        return $this->render('admin/images', ['images' => $images]);
+        return $this->render('admin/images.html.twig', ['images' => $images]);
     }
 
     public function image_show($id, ImageRepository $imageRepository)

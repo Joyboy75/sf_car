@@ -42,6 +42,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Groupes
 							</a>
+							
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<ul class="globals list">
 									{% for grgroupe in ggroupes.getAll %}
@@ -54,6 +55,12 @@
 						</li>
 
 					</ul>
+					{% if not app.user %}
+							<a class="btn btn-primary mb-1 me-1" href="{{path('app_login')}}" role="button">Se connecter</a>
+							{% endif %}
+							{% if app.user %}
+							<a class="btn btn-primary mb-1 me-1" href="{{path('app_logout')}}" role="button">Se déconnecter</a>
+							{% endif %}
 					<form class="d-flex" action="{{ path('search') }}" method="get">
 						<input class="form-control me-2" type="search" name="term" placeholder="Rechercher" aria-label="Search">
 						<button class="btn btn-outline-success" type="submit">Rechercher</button>
